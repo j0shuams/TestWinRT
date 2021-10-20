@@ -4,6 +4,14 @@
 
 namespace BenchmarkComponent
 {
+    [default_interface]
+    runtimeclass ClassForPropertyValue
+    {
+        ClassForPropertyValue();
+        IInspectable NewTypeErasedInt32Object { get; set; };
+        Boolean CheckForIPropertyValue(IInspectable obj);
+    }
+
     interface IIntProperties
     {
         Int32 IntProperty{ get; set; };

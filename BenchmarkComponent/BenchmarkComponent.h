@@ -2,10 +2,25 @@
 
 #include "ClassWithMultipleInterfaces.g.h"
 #include "ClassWithMarshalingRoutines.g.h"
+#include "ClassForPropertyValue.g.h"
 #include "WrappedClass.g.h"
 
 namespace winrt::BenchmarkComponent::implementation
 {
+    struct ClassForPropertyValue : ClassForPropertyValueT<ClassForPropertyValue>
+    {
+    private:
+        Windows::Foundation::IInspectable int32Object;
+        Windows::Foundation::IInspectable createInt32Object();
+
+    public:
+        ClassForPropertyValue();
+
+        Windows::Foundation::IInspectable NewTypeErasedInt32Object();
+        void NewTypeErasedInt32Object(Windows::Foundation::IInspectable val);
+        bool CheckForIPropertyValue(Windows::Foundation::IInspectable const& obj);
+    };
+
     struct ClassWithMultipleInterfaces : ClassWithMultipleInterfacesT<ClassWithMultipleInterfaces>
     {
         ClassWithMultipleInterfaces();
@@ -96,6 +111,10 @@ namespace winrt::BenchmarkComponent::factory_implementation
     };
 
     struct WrappedClass : WrappedClassT<WrappedClass, implementation::WrappedClass>
+    {
+    };
+
+    struct ClassForPropertyValue : ClassForPropertyValueT<ClassForPropertyValue, implementation::ClassForPropertyValue>
     {
     };
 }

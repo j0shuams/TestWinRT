@@ -2,12 +2,43 @@
 #include "BenchmarkComponent.h"
 #include "ClassWithMultipleInterfaces.g.cpp"
 #include "ClassWithMarshalingRoutines.g.cpp"
+#include "ClassForPropertyValue.g.cpp"
 #include "WrappedClass.g.cpp"
 
 using namespace winrt::Windows::Foundation;
 
 namespace winrt::BenchmarkComponent::implementation
 {
+    ClassForPropertyValue::ClassForPropertyValue()
+    {
+        int32Object = createInt32Object();
+    }
+
+    void ClassForPropertyValue::NewTypeErasedInt32Object (Windows::Foundation::IInspectable val)
+    {
+    }
+
+    Windows::Foundation::IInspectable ClassForPropertyValue::createInt32Object()
+    {
+        return PropertyValue::CreateInt32(22222);
+    }
+
+    Windows::Foundation::IInspectable ClassForPropertyValue::NewTypeErasedInt32Object()
+    {
+        return createInt32Object();
+    }
+
+    bool ClassForPropertyValue::CheckForIPropertyValue(Windows::Foundation::IInspectable const& obj)
+    {
+        auto a = obj.try_as<Windows::Foundation::IPropertyValue>();
+        if (a)
+        {
+            auto b = a.Type();
+            return true;
+        }
+        return false;
+    }
+
     ClassWithMultipleInterfaces::ClassWithMultipleInterfaces()
     {
     }
