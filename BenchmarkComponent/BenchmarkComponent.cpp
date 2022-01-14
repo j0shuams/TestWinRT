@@ -295,6 +295,11 @@ namespace winrt::BenchmarkComponent::implementation
         _int = provideInt();
     }
 
+    Windows::Foundation::IInspectable ClassWithMarshalingRoutines::CallCreateMarshaler(BenchmarkComponent::ClassWithMarshalingRoutines classWithMarshalingRoutines)
+    {
+        return classWithMarshalingRoutines.ExistingTypeErasedKeyValuePairObject();
+    }
+
     winrt::event_token ClassWithMarshalingRoutines::DoublePropertyChanged(EventHandler<double_t> const& handler)
     {
         return _doubleChanged.add(handler);

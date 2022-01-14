@@ -101,6 +101,8 @@ namespace winrt::BenchmarkComponent::implementation
         void IntPropertyChanged(winrt::event_token const& token) noexcept;
         void RaiseIntChanged();
         void CallForInt(BenchmarkComponent::ProvideInt const& provideInt);
+        Windows::Foundation::IInspectable CallCreateMarshaler(BenchmarkComponent::ClassWithMarshalingRoutines const classWithMarshalingRoutines);
+
 
         winrt::event_token DoublePropertyChanged(Windows::Foundation::EventHandler<double_t> const& handler);
         void DoublePropertyChanged(winrt::event_token const& token) noexcept;
