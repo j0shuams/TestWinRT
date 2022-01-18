@@ -300,6 +300,11 @@ namespace winrt::BenchmarkComponent::implementation
         return classWithMarshalingRoutines.ExistingTypeErasedKeyValuePairObject();
     }
 
+    int ClassWithMarshalingRoutines::CallGetNum(IIntProperties iProps)
+    {
+        return iProps.IntProperty();
+    }
+
     winrt::event_token ClassWithMarshalingRoutines::DoublePropertyChanged(EventHandler<double_t> const& handler)
     {
         return _doubleChanged.add(handler);

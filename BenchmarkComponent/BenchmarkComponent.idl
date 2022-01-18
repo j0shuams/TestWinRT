@@ -99,6 +99,7 @@ namespace BenchmarkComponent
         Object BoxedDelegate{ get; set; };
 
         IInspectable CallCreateMarshaler(ClassWithMarshalingRoutines classWithMarshalingRoutines);
+        Int32 CallGetNum(IIntProperties iProps);
     }
 
     [default_interface]
