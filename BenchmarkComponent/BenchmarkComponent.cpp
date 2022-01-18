@@ -4,7 +4,7 @@
 #include "ClassWithMarshalingRoutines.g.cpp"
 #include "WrappedClass.g.cpp"
 #include "EventOperations.g.cpp"
-#include "ExtendableClass.g.h"
+#include "ExtendableClass.g.cpp"
 
 using namespace winrt::Windows::Foundation;
 
