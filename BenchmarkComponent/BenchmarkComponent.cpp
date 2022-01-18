@@ -300,9 +300,9 @@ namespace winrt::BenchmarkComponent::implementation
         return classWithMarshalingRoutines.ExistingTypeErasedKeyValuePairObject();
     }
 
-    int ClassWithMarshalingRoutines::CallGetNum(IIntProperties iProps)
+    int ClassWithMarshalingRoutines::CallGetNum(WrappedClass wrappedClass)
     {
-        return iProps.IntProperty();
+        return wrappedClass.DefaultIntProperty();
     }
 
     winrt::event_token ClassWithMarshalingRoutines::DoublePropertyChanged(EventHandler<double_t> const& handler)
