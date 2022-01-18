@@ -4,6 +4,7 @@
 #include "ClassWithMarshalingRoutines.g.h"
 #include "WrappedClass.g.h"
 #include "EventOperations.g.h"
+#include "ExtendableClass.g.h"
 
 namespace winrt::BenchmarkComponent::implementation
 {
@@ -101,8 +102,9 @@ namespace winrt::BenchmarkComponent::implementation
         void IntPropertyChanged(winrt::event_token const& token) noexcept;
         void RaiseIntChanged();
         void CallForInt(BenchmarkComponent::ProvideInt const& provideInt);
+
         Windows::Foundation::IInspectable CallCreateMarshaler(BenchmarkComponent::ClassWithMarshalingRoutines const classWithMarshalingRoutines);
-        int32_t CallGetNum(BenchmarkComponent::WrappedClass wrappedClass);
+        int32_t CallGetNum(BenchmarkComponent::ExtendableClass const xClass);
 
 
         winrt::event_token DoublePropertyChanged(Windows::Foundation::EventHandler<double_t> const& handler);
@@ -143,6 +145,18 @@ namespace winrt::BenchmarkComponent::implementation
         void FireIntEvent();
         void FireDoubleEvent();
     };
+
+    struct ExtendableClass : ExtendableClassT<ExtendableClass>
+    {
+        private:
+            int32_t privateInt;
+        
+        public: 
+            ExtendableClass() = default;
+
+            ExtendableClass(int32_t startNum);
+            int32_t GetNum();
+    };
 }
 
 namespace winrt::BenchmarkComponent::factory_implementation
@@ -160,6 +174,10 @@ namespace winrt::BenchmarkComponent::factory_implementation
     };
 
     struct EventOperations : EventOperationsT<EventOperations, implementation::EventOperations>
+    {
+    };
+
+    struct ExtendableClass : ExtendableClassT<ExtendableClass, implementation::ExtendableClass>
     {
     };
 }

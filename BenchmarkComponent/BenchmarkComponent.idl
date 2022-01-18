@@ -99,7 +99,7 @@ namespace BenchmarkComponent
         Object BoxedDelegate{ get; set; };
 
         IInspectable CallCreateMarshaler(ClassWithMarshalingRoutines classWithMarshalingRoutines);
-        Int32 CallGetNum(WrappedClass wrappedClass);
+        Int32 CallGetNum(ExtendableClass xClass);
     }
 
     [default_interface]
@@ -114,4 +114,13 @@ namespace BenchmarkComponent
         void FireIntEvent();
         void FireDoubleEvent();
     }
+
+    [default_interface]
+    unsealed runtimeclass ExtendableClass
+    {
+        ExtendableClass();
+        ExtendableClass(Int32 startNum);
+        Int32 GetNum();
+    }
+
 }

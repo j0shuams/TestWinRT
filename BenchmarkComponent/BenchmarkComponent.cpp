@@ -4,6 +4,7 @@
 #include "ClassWithMarshalingRoutines.g.cpp"
 #include "WrappedClass.g.cpp"
 #include "EventOperations.g.cpp"
+#include "ExtendableClass.g.h"
 
 using namespace winrt::Windows::Foundation;
 
@@ -256,6 +257,15 @@ namespace winrt::BenchmarkComponent::implementation
         _handler = value.as<Windows::Foundation::IReference<BenchmarkComponent::ProvideInt>>().Value();
     }
 
+    ExtendableClass::ExtendableClass(int32_t startNum)
+    {
+        privateInt = startNum;
+    }
+    int32_t ExtendableClass::GetNum()
+    {
+        return privateInt;
+    }
+
     WrappedClass::WrappedClass()
     {
     }
@@ -300,9 +310,9 @@ namespace winrt::BenchmarkComponent::implementation
         return classWithMarshalingRoutines.ExistingTypeErasedKeyValuePairObject();
     }
 
-    int ClassWithMarshalingRoutines::CallGetNum(WrappedClass wrappedClass)
+    int ClassWithMarshalingRoutines::CallGetNum(BenchmarkComponent::ExtendableClass const xClass)
     {
-        return wrappedClass.DefaultIntProperty();
+        return xClass.GetNum();
     }
 
     winrt::event_token ClassWithMarshalingRoutines::DoublePropertyChanged(EventHandler<double_t> const& handler)
