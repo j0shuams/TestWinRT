@@ -310,6 +310,11 @@ namespace winrt::BenchmarkComponent::implementation
         return classWithMarshalingRoutines.ExistingTypeErasedKeyValuePairObject();
     }
 
+    void ClassWithMarshalingRoutines::PassClass(BenchmarkComponent::ClassWithMarshalingRoutines classWithMarshalingRoutines)
+    {
+        return;
+    }
+
     int ClassWithMarshalingRoutines::CallGetNum(BenchmarkComponent::ExtendableClass const xClass)
     {
         return xClass.GetNum();

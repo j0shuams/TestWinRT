@@ -99,6 +99,7 @@ namespace BenchmarkComponent
         Object BoxedDelegate{ get; set; };
 
         IInspectable CallCreateMarshaler(ClassWithMarshalingRoutines classWithMarshalingRoutines);
+        void PassClass(ClassWithMarshalingRoutines classWithMarshalingRoutines);
         Int32 CallGetNum(ExtendableClass xClass);
     }
 

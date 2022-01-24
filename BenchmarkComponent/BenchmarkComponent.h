@@ -104,6 +104,7 @@ namespace winrt::BenchmarkComponent::implementation
         void CallForInt(BenchmarkComponent::ProvideInt const& provideInt);
 
         Windows::Foundation::IInspectable CallCreateMarshaler(BenchmarkComponent::ClassWithMarshalingRoutines const classWithMarshalingRoutines);
+        void PassClass(BenchmarkComponent::ClassWithMarshalingRoutines const classWithMarshalingRoutines);
         int32_t CallGetNum(BenchmarkComponent::ExtendableClass const xClass);
 
 
